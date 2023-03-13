@@ -22,3 +22,12 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.firstName
+
+
+class Account(models.Model):
+    accountNo
+    sortCode
+    accoutName
+    routingNo
+    accountType
+    customerId = models.ForeignKey()
