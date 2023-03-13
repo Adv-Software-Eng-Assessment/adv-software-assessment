@@ -7,6 +7,8 @@ from django.urls import path, include
 router = routers.DefaultRouter()
 router.register(r'heroes', views.HeroViewSet)
 router.register(r'customers', views.CustomerViewSet)
+router.register(r'account', views.AccountViewSet)
+router.register(r'transaction', views.TransactionViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
