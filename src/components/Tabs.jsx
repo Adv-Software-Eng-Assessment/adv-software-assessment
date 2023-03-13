@@ -1,7 +1,23 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
 
 const Tabs = () => {
+
+    const [customer, setCustomer] = useState();
+
+    async function getUser() {
+        try {
+          const response = await axios.get('http://localhost:8000/customers/');
+          setCustomer(response.data);
+          console.log(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      React.useEffect(() => {
+        getUser()
+      }, []);
 
     const [currentTab, setCurrentTab] = useState('1');
     const tabs = [
@@ -12,7 +28,7 @@ const Tabs = () => {
             
             content: 
                 <div className='AccountName'>
-                    <p>Name: Miss Name Surname</p>
+                    <p>Name: {customer && customer[1].firstName} {customer && customer[1].lastName}</p>
                     <span>Account Number: 70-00-77 11002233</span>
                     <hr />
                     <div className='Transaction'>
