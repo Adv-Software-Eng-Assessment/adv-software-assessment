@@ -1,0 +1,32 @@
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.header{
+    
+    background: rgb(48, 106, 215);
+    height: 100px;
+}
+
+.header-con {
+    display: flex;
+    justify-content: space-between;
+
+    height: 80px;
+    width: auto;
+    align-items: center;
+}
+.logo-container h1 {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 0 auto;
+    padding: 3rem 0;
+      
+}
+
+
+
+    
