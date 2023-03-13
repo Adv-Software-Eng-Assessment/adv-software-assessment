@@ -25,6 +25,7 @@ class Customer(models.Model):
 
 
 class Account(models.Model):
+    customername = models.CharField(max_length=20)
     accountNo
     sortCode
     accoutName
