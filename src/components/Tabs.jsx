@@ -7,7 +7,7 @@ const Tabs = () => {
 
     async function getUser() {
         try {
-          const response = await axios.get('http://localhost:8000/customers/');
+          const response = await axios.get('/customers/');
           setCustomer(response.data);
           console.log(response.data);
         } catch (error) {
