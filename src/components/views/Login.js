@@ -20,7 +20,7 @@
  */
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Form from "../../utilities/Forms";
 import './Header.css';
 import { BsBank2 } from "react-icons/bs";
@@ -34,6 +34,7 @@ const Login = () => {
   const [validate, setValidate] = useState({});
   const [showPassword, setShowPassword] = useState(false);
  
+  const history = useHistory()
 
   const validateLogin = () => {
     let isValid = true;
@@ -73,6 +74,7 @@ const Login = () => {
       alert("Successfully Login");
     }
     
+    history.push('/dashboard')
   };
 
 
@@ -94,7 +96,7 @@ const Login = () => {
                     <h1><BsBank2/> WELCOME TO SWEA BANK</h1>
                 </div> */}
                 <Header />
-      <div className="col-12 col-md-7 col-lg-6 auth-main-col text-center">
+      <div className="col-12 col-md-12 col-lg-12 auth-main-col text-center">
         <div className="d-flex flex-column align-content-end">
           <div className="auth-body mx-auto">
             <h1 className="login"><AiFillLock/> Login to your bank account </h1>

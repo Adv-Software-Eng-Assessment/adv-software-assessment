@@ -13,7 +13,7 @@ function App() {
     <div>
           <Router>
       <Switch>
-        <Route path="/" component={<Redirect to="/login" />} exact />
+        <Route path="/" render={routeProps => <Redirect to="/login" />} exact />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/dashboard" component={Dashboard} />
