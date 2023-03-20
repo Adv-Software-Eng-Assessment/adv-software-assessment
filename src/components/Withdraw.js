@@ -60,7 +60,7 @@ function Withdraw() {
                         <h1>Amount (£)</h1>
                             <input
                                         type="number"
-                                        className={`block`}
+                                        className={`block form-control`}
                                         id="Amount"
                                         name="Amount"
                                         value={formValues.Amount}
@@ -75,7 +75,7 @@ function Withdraw() {
                     <h1>Refference</h1>
                         <input
                             type="text"
-                            className={`block`}
+                            className={`block form-control`}
                             id="Ref"
                             name="Ref"
                             value={formValues.Ref}
@@ -88,8 +88,8 @@ function Withdraw() {
                         <div className="text-center">
                   <div className='btn1'>
                   <button
-            
-                    
+                                
+
                   >
                     Submit
                   </button>

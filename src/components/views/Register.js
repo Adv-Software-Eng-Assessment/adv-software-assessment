@@ -20,7 +20,7 @@
  */
 
 import { useState } from "react";
-
+import { Link, useHistory } from "react-router-dom";
 import Form from "../../utilities/Forms";
 import { BsBank2 } from "react-icons/bs";
 import './Register.css';
@@ -41,6 +41,7 @@ const Register = () => {
   const [confirmpassword, setconfirmPassword] = useState("");
   const [validate, setValidate] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const history = useHistory()
 
   const validateRegister = () => {
     let isValid = true;
@@ -93,6 +94,8 @@ const Register = () => {
       setmobilenumber("");
       alert("Successfully Register User");
     }
+
+    history.push('/login')
 
   };
 
