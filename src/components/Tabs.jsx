@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Withdraw from "./Withdraw"
+import Deposit from "./Deposit"
+import Transfer from "./Transfer"
 import axios from 'axios';
 
 const Tabs = () => {
@@ -64,20 +67,30 @@ const Tabs = () => {
         {
             id: 2,
             tabTitle: 'Withdraw',
-            title: 'Title 2',
-            content: 'Contenido de tab 2.'
+            title: 'Cash Withdraw',
+            content: 
+            <div className='Withdraw'>
+                
+                <Withdraw/>
+            </div>
         },
         {
             id: 3,
             tabTitle: 'Deopsit',
-            title: 'Title 3',
-            content: 'Contenido de tab 3.'
+            title: 'Deposit',
+            content: <div className='Deposit'>
+                
+            <Deposit/>
+        </div>
         },
         {
             id: 4,
             tabTitle: 'Transfer Money',
-            title: 'Title 4',
-            content: 'Contenido de tab 4.'
+            title: 'Transfer Money',
+            content: <div className='Transfer'>
+                
+            <Transfer/>
+        </div>
         }
     ];
 
