@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Withdraw from "./Withdraw"
+import Deposit from "./Deposit"
+import Transfer from "./Transfer"
 import axios from 'axios';
 import { formatAmount } from '../utilities/utils';
 

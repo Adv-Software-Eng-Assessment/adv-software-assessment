@@ -117,20 +117,48 @@ const Login = () => {
         {/* <div className='logo-container'>
                     <h1><BsBank2/> WELCOME TO SWEA BANK</h1>
                 </div> */}
-        <Header />
-        <div className="col-12 col-md-7 col-lg-6 auth-main-col text-center">
-          <div className="d-flex flex-column align-content-end">
-            <div className="auth-body mx-auto">
-              <h1 className="login">
-                <AiFillLock /> Login to your bank account{' '}
-              </h1>
-              <div className="auth-form-container text-start">
-                <form
-                  className="auth-form"
-                  method="POST"
-                  onSubmit={authenticate}
-                  autoComplete={'off'}>
-                  <div className="email mb-3">
+                <Header />
+      <div className="col-12 col-md-12 col-lg-12 auth-main-col text-center">
+        <div className="d-flex flex-column align-content-end">
+          <div className="auth-body mx-auto">
+            <h1 className="login"><AiFillLock/> Login to your bank account </h1>
+            <div className="auth-form-container text-start">
+              <form
+                className="auth-form"
+                method="POST"
+                onSubmit={authenticate}
+                autoComplete={"off"}
+              >
+                <div className="email mb-3">
+                  <input
+                    type="email"
+                    className={`form-control ${
+                      validate.validate && validate.validate.email
+                        ? "is-invalid "
+                        : ""
+                    }`}
+                    id="email"
+                    name="email"
+                    value={email}
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+
+                  <div
+                    className={`invalid-feedback text-start ${
+                      validate.validate && validate.validate.email
+                        ? "d-block"
+                        : "d-none"
+                    }`}
+                  >
+                    {validate.validate && validate.validate.email
+                      ? validate.validate.email[0]
+                      : ""}
+                  </div>
+                </div>
+
+                <div className="password mb-3">
+                  <div className="input-group">
                     <input
                       type="email"
                       className={`form-control ${
@@ -206,6 +234,7 @@ const Login = () => {
                       className="btn btn-primary w-100 theme-btn mx-auto">
                       Log In
                     </button>
+                  </div>
                   </div>
                 </form>
 

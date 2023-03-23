@@ -1,6 +1,7 @@
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
+    
 }
 .header{
     background: rgb(48, 106, 215);
@@ -18,12 +19,17 @@
     padding: 1.5rem 0;
     
     
+    
 }
 .auth-body {
-    
+    margin-top: 50px;
     padding: 50px;
     font-size: large;
     font-weight: 400;
     text-align: center;
+    background-color: rgb(144, 184, 227);
+   
 }
+
+
 
