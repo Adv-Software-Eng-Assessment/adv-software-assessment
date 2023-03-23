@@ -11,14 +11,21 @@ from .models import Customer, Account, Transaction
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Customer
-        fields = ('firstName', 'lastName', 'mobileNo','email','city','country','address','zipCode' )
+        fields = ('id', 'firstName', 'lastName', 'password', 'mobileNo',
+                  'email', 'city', 'country', 'address', 'zipCode')
+
 
 class AccountSerializer(serializers.HyperlinkedModelSerializer):
+    # customerId = CustomerSerializer()
+
     class Meta:
         model = Account
-        fields = ('customerName', 'accountNo', 'sortCode','accountType','totalBalance')
+        fields = ('id', 'customerName', 'accountNo', 'sortCode',
+                  'accountType', 'totalBalance', 'customerId')
+
 
 class TransactionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Transaction
-        fields = ('receiverCustomerName', 'receiverAccountNo', 'receiverSortCode','transactionType','totalBalance')
+        fields = ('receiverCustomerName', 'receiverAccountNo',
+                  'receiverSortCode', 'transactionType', 'totalBalance')

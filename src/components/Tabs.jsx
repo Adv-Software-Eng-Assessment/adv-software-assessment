@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { formatAmount } from '../utilities/utils';
 
 const Tabs = () => {
   const [customer, setCustomer] = useState();
+  const [account, setAccount] = useState();
+
+  const customerId = localStorage.getItem('id');
 
   async function getUser() {
     try {
-      const response = await axios.get('/customers/');
-      setCustomer(response.data);
+      const response = await axios.get('/customers/' + customerId);
+      const acctResponse = await axios.get('account/cust/' + customerId);
+
+      if (response.data) {
+        setCustomer(response.data);
+      }
+
+      if (response.data) {
+        setAccount(acctResponse.data);
+      }
+
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -24,14 +37,23 @@ const Tabs = () => {
       id: 1,
       tabTitle: 'Account Details',
       title: 'Account Details',
-
       content: (
         <div className="AccountName">
-          <p>
-            Name: {customer && customer[1].firstName}{' '}
-            {customer && customer[1].lastName}
-          </p>
-          <span>Account Number: 70-00-77 11002233</span>
+          <b>
+            Name: {customer ? customer.firstName : ''}{' '}
+            {customer ? customer.lastName : ''}
+          </b>
+          <br />
+          <b>Account Number: {account && account.accountNo}</b>
+
+          <br />
+          <br />
+
+          <p>Your account balance: </p>
+          <p style={{
+            fontSize: '40px'
+          }}>{account && formatAmount(account.totalBalance)}</p>
+
           <hr />
           <div className="Transaction">
             <h2>Your Transaction Details</h2>

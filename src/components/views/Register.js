@@ -20,11 +20,12 @@
  */
 
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import Form from '../../utilities/Forms';
 import { BsBank2 } from 'react-icons/bs';
 import './Register.css';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import LoadingOverlay from '../common/LoadingOverlay';
 
@@ -100,15 +101,27 @@ const Register = () => {
     }
   };
 
+  const history = useHistory();
+
   async function createUser() {
     try {
       const response = await axios.post('/customers/', {
         firstName: name,
         lastName: Lastname,
-        email: email
+        email: email,
+        mobileNo: mobilenumber,
+        city: city,
+        country: country,
+        address: Address,
+        zipCode: postcode,
+        password: password
       });
 
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+        toast('Customer account created succssfully');
+        history.push('/login');
+      }, 2000);
       console.log(response.data);
     } catch (error) {
       setIsLoading(false);

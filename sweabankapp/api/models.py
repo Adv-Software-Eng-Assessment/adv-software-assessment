@@ -15,6 +15,7 @@ class Customer(models.Model):
     lastName = models.CharField(max_length=60)
     # dob = models.CharField(max_length=40)
     email = models.CharField(max_length=40)
+    password = models.TextField(default=None, null=True, blank=True)
     mobileNo = models.CharField(max_length=20, null=True)
     zipCode = models.CharField(max_length=20, null=True)
     address = models.CharField(max_length=20, null=True)
@@ -30,9 +31,7 @@ class Account(models.Model):
     accountNo = models.BigIntegerField()
     sortCode = models.CharField(max_length=20)
     accountType = models.CharField(max_length=20)
-    customerId = models.ForeignKey(Customer, models.SET_NULL,
-                                   blank=True,
-                                   null=True)
+    customerId = models.BigIntegerField(default=None, null=True)
     totalBalance = models.FloatField(max_length=40)
 
     def __str__(self):
@@ -44,11 +43,12 @@ class Transaction(models.Model):
     receiverAccountNo = models.BigIntegerField()
     receiverSortCode = models.CharField(max_length=20)
     transactionType = models.CharField(max_length=20)
-    customerId = models.ForeignKey(Customer, models.SET_NULL,
-                                   blank=True,
-                                   null=True)
+    customerId = models.BigIntegerField(default=None, null=True)
     amount = models.FloatField(default=0)
     totalBalance = models.FloatField(max_length=40)
+    # customerId = models.ForeignKey(Customer, models.SET_NULL,
+    #                            blank=True,
+    #                            null=True)
 
     def __str__(self):
         return '%s,%s,%s,%s,%s,%s,%s' % (self.receiverCustomerName, self.receiverAccountNo, self.receiverSortCode, self.customerId, self.totalBalance, self.transactionType, self.amount)
