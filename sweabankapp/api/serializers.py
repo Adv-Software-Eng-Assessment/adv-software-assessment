@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Hero, Customer, Account, Transaction
+from .models import Customer, Account, Transaction
 
 
-class HeroSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Hero
-        fields = ('name', 'alias')
+# class HeroSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = Hero
+#         fields = ('name', 'alias')
 
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
