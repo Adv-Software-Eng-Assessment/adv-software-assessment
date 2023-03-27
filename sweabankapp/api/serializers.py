@@ -27,5 +27,5 @@ class AccountSerializer(serializers.HyperlinkedModelSerializer):
 class TransactionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Transaction
-        fields = ('receiverCustomerName', 'receiverAccountNo',
-                  'receiverSortCode', 'transactionType', 'totalBalance')
+        fields = ('created', 'receiverCustomerName', 'receiverAccountNo',
+                  'receiverSortCode', 'transactionType', 'totalBalance', 'customerId', 'amount')
