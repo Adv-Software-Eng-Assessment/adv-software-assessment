@@ -39,13 +39,15 @@ class Account(models.Model):
 
 
 class Transaction(models.Model):
-    receiverCustomerName = models.CharField(max_length=20)
-    receiverAccountNo = models.BigIntegerField()
-    receiverSortCode = models.CharField(max_length=20)
-    transactionType = models.CharField(max_length=20)
+    created = models.DateTimeField(auto_now_add=True)
+    receiverCustomerName = models.CharField(
+        max_length=50, null=True, blank=True)
+    receiverAccountNo = models.CharField(max_length=20, null=True, blank=True)
+    receiverSortCode = models.CharField(max_length=20, null=True, blank=True)
+    transactionType = models.CharField(max_length=40)
     customerId = models.BigIntegerField(default=None, null=True)
     amount = models.FloatField(default=0)
-    totalBalance = models.FloatField(max_length=40)
+    totalBalance = models.FloatField(default=0)
     # customerId = models.ForeignKey(Customer, models.SET_NULL,
     #                            blank=True,
     #                            null=True)

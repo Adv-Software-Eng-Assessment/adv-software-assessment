@@ -8,6 +8,8 @@ import json
 import random
 import string
 
+from .exceptions import CustomException
+
 
 from .serializers import CustomerSerializer, AccountSerializer, TransactionSerializer
 from .models import Customer, Account, Transaction
@@ -54,7 +56,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
 
 class CustomerList(APIView):
     """
-    List all customers, or create a new custromer.
+    List all customers, or create a new customer.
     """
 
     def get(self, request, format=None):
@@ -108,7 +110,7 @@ class AccountList(APIView):
             ' ' + request.data['lastName']
         account_type = 'savings'
         total_balance = 0
-        sort_code = ''
+        sort_code = '00000'
         customer_id = customer.id
         new_account = Account(customerName=customer_name, accountNo=account_no,
                               sortCode=sort_code, accountType=account_type, totalBalance=total_balance, customerId=customer_id)
@@ -119,7 +121,6 @@ class AccountList(APIView):
 class AccountDetail(APIView):
     def get_customer(self, id):
         try:
-            print(Customer.objects.get(id=id))
             return Customer.objects.get(id=id)
         except Customer.DoesNotExist:
             raise Http404
@@ -127,16 +128,13 @@ class AccountDetail(APIView):
     def get_object(self, id):
         try:
             customer = self.get_customer(id)
-            print(customer)
             return Account.objects.get(customerId=customer.id)
         except Account.DoesNotExist:
             raise Http404
 
     def get(self, request, id):
         account = Account.objects.get(customerId=id)
-        print(account)
         serializer = AccountSerializer(account)
-        print(serializer)
         return Response(serializer.data)
 
 
@@ -155,6 +153,131 @@ class LoginView(APIView):
         except Exception:
             raise Http404
 
-        print(bank_customer)
-
         return HttpResponse(json.dumps({'id': bank_customer.id}))
+
+
+class DepositView(APIView):
+    def get_object(self, id):
+        try:
+            return Account.objects.get(customerId=id)
+        except Account.DoesNotExist:
+            raise Http404
+
+    def put(self, request, id):
+        account = self.get_object(id)
+
+        request_body = json.loads(request.body)
+
+        balance = account.totalBalance + request_body['amount']
+
+        serializer = AccountSerializer(account, data={
+            'totalBalance': balance,
+            'customerName': account.customerName,
+            'customerId': account.customerId,
+            'accountType': account.accountType,
+            'accountNo': account.accountNo,
+            'sortCode': '00000'
+        })
+        if serializer.is_valid():
+            serializer.save()
+            transaction = TransactionsView()
+            transaction.post(request, account.customerId,
+                             'Deposit', balance)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class WithdrawView(APIView):
+    def get_object(self, id):
+        try:
+            return Account.objects.get(customerId=id)
+        except Account.DoesNotExist:
+            raise Http404
+
+    def put(self, request, id):
+        account = self.get_object(id)
+
+        request_body = json.loads(request.body)
+
+        if (request_body['amount'] > account.totalBalance):
+            raise CustomException(
+                detail={"Failure": "Insufficient balance"}, status_code=status.HTTP_400_BAD_REQUEST)
+            # return Response('error', status=status.HTTP_400_BAD_REQUEST)
+
+        balance = account.totalBalance - request_body['amount']
+
+        serializer = AccountSerializer(account, data={
+            'totalBalance': balance,
+            'customerName': account.customerName,
+            'customerId': account.customerId,
+            'accountType': account.accountType,
+            'accountNo': account.accountNo,
+            'sortCode': '00000'
+        })
+        if serializer.is_valid():
+            serializer.save()
+            transaction = TransactionsView()
+            transaction.post(request, account.customerId,
+                             'Withdrawal', balance)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class TransferView(APIView):
+    def get_object(self, id):
+        try:
+            return Account.objects.get(customerId=id)
+        except Account.DoesNotExist:
+            raise Http404
+
+    def put(self, request, id):
+        account = self.get_object(id)
+
+        request_body = json.loads(request.body)
+
+        if (request_body['amount'] > account.totalBalance):
+            raise CustomException(
+                detail={"Failure": "Insufficient balance"}, status_code=status.HTTP_400_BAD_REQUEST)
+            # return Response('error', status=status.HTTP_400_BAD_REQUEST)
+
+        balance = account.totalBalance - request_body['amount']
+
+        serializer = AccountSerializer(account, data={
+            'totalBalance': balance,
+            'customerName': account.customerName,
+            'customerId': account.customerId,
+            'accountType': account.accountType,
+            'accountNo': account.accountNo,
+            'sortCode': '00000'
+        })
+        if serializer.is_valid():
+            serializer.save()
+            transaction = TransactionsView()
+            transaction.post(request, account.customerId,
+                             'Transfer', balance)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class TransactionsView(APIView):
+    def get(self, request, id, format=None):
+        try:
+            transactions = Transaction.objects.filter(customerId=id)
+            serializer = TransactionSerializer(transactions, many=True)
+            return Response(serializer.data)
+        except Transaction.DoesNotExist:
+            raise Http404
+
+    def post(self, request, customer_id, transaction_type, balance):
+        receiver_customer_name = None
+        receiver_account_no = request.data.get('receiverAccountNo') if request.data.get(
+            'receiverAccountNo') is not None else None
+        receiver_sort_code = request.data.get('receiverSortCode') if request.data.get(
+            'receiverSortCode') is not None else None
+        amount = request.data['amount']
+
+        new_transaction = Transaction(receiverCustomerName=receiver_customer_name, receiverAccountNo=receiver_account_no, receiverSortCode=receiver_sort_code,
+                                      amount=amount, transactionType=transaction_type, totalBalance=balance, customerId=customer_id)
+
+        new_transaction.save()
+        return Response(new_transaction)

@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1531be92-8ea0-4e96-86e1-047c6d38d086" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Deposit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Deposit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Tabs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tabs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Withdraw.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Withdraw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sweabankapp/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/sweabankapp/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sweabankapp/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sweabankapp/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

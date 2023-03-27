@@ -158,7 +158,7 @@ const Login = () => {
                 </div>
 
                 <div className="password mb-3">
-                  <div className="input-group">
+                  {/* <div className="input-group">
                     <input
                       type="email"
                       className={`form-control ${
@@ -183,7 +183,7 @@ const Login = () => {
                         ? validate.validate.email[0]
                         : ''}
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="password mb-3">
                     <div className="input-group">

@@ -1,106 +1,122 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
 }
 
-
-
 .container {
-    width: 1500px;
-    margin: 0 auto;
+  width: 1500px;
+  margin: 0 auto;
 }
 
 .tabs {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .tabs button {
-    background-color: rgb(0, 0, 0);
-    border: none;
-    color: #888888;
-    cursor: pointer;
-    padding: 20px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
-    transition: all 0.5s ease-out;
+  background-color: rgb(0, 0, 0);
+  border: none;
+  color: #888888;
+  cursor: pointer;
+  padding: 20px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease-out;
 }
 
 .tabs button:hover {
-    color: rgb(81, 73, 73);
-    background-color: rgba(13, 16, 197, 0.15);
+  color: rgb(81, 73, 73);
+  background-color: rgba(13, 16, 197, 0.15);
 }
 
 .tabs button:disabled {
-    background: rgb(113, 144, 207);
-    color: white;
+  background: rgb(113, 144, 207);
+  color: white;
 }
 
 .title {
-    color: black;
-    text-decoration:none;
-    text-align: left;
-    font-size: 30px;
-    margin-bottom: 20px;
-    font-weight: 600;
+  color: black;
+  text-decoration: none;
+  text-align: left;
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .content {
-    padding: 50px 80px;
-    background-color: white;
-    font-weight: 300;
-    line-height: auto; 
-    font-size: 20px;
-    text-align: justify;
+  padding: 50px 80px;
+  background-color: white;
+  font-weight: 300;
+  line-height: auto;
+  font-size: 20px;
+  text-align: justify;
 }
 
 .content,
 button {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .AccountName {
-    font-size: 20px;
-    font-weight: 400;
-    
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .AccountName hr {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    width: 35rem;
-    align-items: auto;
-    
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 35rem;
+  align-items: auto;
 }
 
-.Transaction h2{
-    font-size: 20px;
+.Transaction h2 {
+  font-size: 20px;
 }
 
 .Transaction hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: auto;
-    align-items: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  align-items: auto;
 }
 
-.date{
-    font-size: 17px;
-    display: flex;
-    justify-content: space-between;
+.date {
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-.Tdetails{
-    font-size: 17px;
-    display:flex;
-    justify-content:space-between;
+.Tdetails {
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
 }
 
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
+#customers tr:hover {
+  background-color: #ddd;
+}
 
-
-
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(48, 106, 215);
+  color: white;
+}
