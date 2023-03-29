@@ -8,6 +8,10 @@
 #### Test Cases - located in test-cases folder
 #### Figma Designs - located in figma-designs folder
 
+#### React Front-End - located in project root folder
+
+#### Python Back-End and Database - located in sweabankapp folder
+
 ## Development Stack Versions
 Python 3.11.2
 
