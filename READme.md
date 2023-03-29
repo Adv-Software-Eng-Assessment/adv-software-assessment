@@ -1,17 +1,26 @@
 # SWEA Bank App (SOftware Engineering Assessment)
 
 ## Deliverables for Assessment
-### User Stories - located in user-stories folder
-### UML Diagrams - located in uml-diagrams folder
-### Gannt Chart (for two iterations in project) - located in gannt-chart folder
-### Web App Screenshots - located in app-screenshots folder
-### Test Cases - located in test-cases folder
-### Figma Designs - located in figma-designs folder
+#### User Stories - located in user-stories folder
+#### UML Diagrams - located in uml-diagrams folder
+#### Gannt Chart (for two iterations in project) - located in gannt-chart folder
+#### Web App Screenshots - located in app-screenshots folder
+#### Test Cases - located in test-cases folder
+#### Figma Designs - located in figma-designs folder
+
+#### React Front-End - located in src and public folder
+
+#### React Project Dependencies - located in package.json file
+
+#### React Environment Variables - located in .env file
+
+#### Python Back-End and Database - located in sweabankapp folder
 
 ## Development Stack Versions
 Python 3.11.2
 
 Django 4.1.7
+
 --------------------------------------------------
 JavaScript ES6+
 
