@@ -1,6 +1,8 @@
+import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { formatAmount } from '../utilities/utils';
+import { toast } from 'react-toastify';
+import { formatAmount, generateRandomString } from '../utilities/utils';
 import './Transfer.css';
 
 function Transfer({ accoutBalance, onSuccess }) {
@@ -23,6 +25,10 @@ function Transfer({ accoutBalance, onSuccess }) {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+
+    if (!formErrors.Amount && !formErrors.AccountNumber && !formErrors.SortCode) {
+      transferAmount();
+    }
   };
 
   useEffect(() => {
@@ -44,11 +50,41 @@ function Transfer({ accoutBalance, onSuccess }) {
     if (!values.SortCode) {
       errors.SortCode = 'Sort Code is required!';
     } else if (values.Amount && values.AccountNumber && values.SortCode) {
-      alert('Successfully Transfer');
+      // alert('Successfully Transfer');
     }
 
     return errors;
   };
+
+  const customerId = localStorage.getItem('id');
+
+  async function transferAmount() {
+    try {
+      const response = await axios.put(
+        'account/transfer/' + +customerId + '/',
+        {
+          amount: +formValues.Amount,
+          receiverSortCode: formValues.SortCode,
+          receiverAccountNo: formValues.AccountNumber
+        }
+      );
+
+      if (response) {
+        toast('Transfer successsful');
+        onSuccess();
+      }
+    } catch (error) {
+      // console.log(error.response.data.Failure);
+      toast(error.response.data.Failure);
+    }
+  };
+
+  React.useEffect(() => {
+    setFormValues((formValues) => ({
+      ...formValues,
+      Ref: 'SWEA' + generateRandomString({ length: 6 })
+    }));
+  }, []);
 
   return (
     <div className="container">
@@ -105,6 +141,8 @@ function Transfer({ accoutBalance, onSuccess }) {
                 value={formValues.Ref}
                 placeholder="Refference"
                 onChange={handleChange}
+                disabled
+                readOnly
               />
             </div>
             <div className="text-center">
