@@ -1,9 +1,9 @@
-# SWEA Bank App
+# SWEA Bank App (SOftware Engineering Assessment)
 
-## Stack Versions
+## Development Stack Versions
 Python 3.11.2
 Django 4.1.7
-
+--------------------------------------------------
 JavaScript ES6+
 React 18.1.0
 
@@ -20,7 +20,7 @@ Open https://localhost:3000 to view the application
 You can also remove BROWSER=none from the .env file and re-run npm start to automatically open the browser with https://localhost:3000
 
 ## (Optional) You can run the project in a virtual environment by following below
-## (Optional) Create a virtual environment to isolate our package dependencies locally
+### (Optional) Create a virtual environment to isolate our package dependencies locally
 python3 -m venv env
 Run activate.bat file (if on Windows environment)
 
