@@ -8,7 +8,11 @@
 #### Test Cases - located in test-cases folder
 #### Figma Designs - located in figma-designs folder
 
-#### React Front-End - located in project root folder
+#### React Front-End - located in src and public folder
+
+#### React Project Dependencies - located in package.json file
+
+#### React Environment Variables - located in .env file
 
 #### Python Back-End and Database - located in sweabankapp folder
 
