@@ -1,12 +1,22 @@
-# SWEA Bank App (SOftware Engineering Assessment)
+# SWEA Bank App (Software Engineering Assessment)
 
 ## Deliverables for Assessment
 #### User Stories - located in user-stories folder
-#### UML Diagrams - located in uml-diagrams folder
+#### UML Diagrams (class and sequence diagrams) - located in uml-diagrams folder
 #### Gannt Chart (for two iterations in project) - located in gannt-chart folder
 #### Web App Screenshots - located in app-screenshots folder
 #### Test Cases - located in test-cases folder
-#### Figma Designs - located in figma-designs folder
+Two iterations were performed for the testing phase, the first iteration details some pass and fail cases
+
+The second iteration details the pass cases after fixing issues/bugs in the code
+
+#### Figma Designs Iterations - located in figma-designs folder
+The first system design iteration produced a Figma document which had too many pages that resulted in too many clicks to perform a task (SWEA-WebDesign-Initial-Draft-ver1.pdf)
+
+Adopting a simplicity approach in UX design in the second iteration, a UI design final draft was produced (SWEA-WebDesign-FinalDraft-ver2.pdf)
+
+#### Final Figma UI Designs can also be found in the URL - [Banking App Final Figma Designs](https://www.figma.com/file/bQk4TIEbEjfCyA4FCpPhDp/Draf2?node-id=0-1)
+
 
 #### React Front-End - located in src and public folder
 
