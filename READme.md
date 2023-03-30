@@ -5,6 +5,7 @@
 #### UML Diagrams (class and sequence diagrams) - located in uml-diagrams folder
 #### Gannt Chart (for two iterations in project) - located in gannt-chart folder
 #### Web App Screenshots - located in app-screenshots folder
+#### Meeting Notes - located in meeting-notes folder
 #### Test Cases - located in test-cases folder
 Two iterations were performed for the testing phase, the first iteration details some pass and fail cases
 
